@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    ANSIBLE_CONFIG=${env.PWD}+'/config/ansible.cfg'
+    ANSIBLE_CONFIG='${env.PWD}'+'/config/ansible.cfg'
   }
   stages {
     stage('Clone') {
