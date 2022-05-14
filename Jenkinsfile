@@ -13,6 +13,7 @@ pipeline {
     stage('Clone easy deploy and hosts') {
       steps {
         withCredentials([gitUsernamePassword(credentialsId: 'KK-github-key', gitToolName: 'git-tool')]) {
+          sh 'rm -rf .easy-deploy'
           sh 'git clone https://github.com/NpoolPlatform/easy-deploy.git .easy-deploy'
           sh 'cd .easy-deploy/inventories; git clone https://github.com/NpoolHosts/$CUSTOMER.git $CUSTOMER'
         }
