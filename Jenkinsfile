@@ -22,13 +22,13 @@ pipeline {
 
     stage('Preparing') {
       steps {
-          sh "cd .easy-deploy; ANSIBLE_CONFIG=pwd()/config/ansible.cfg ansible-playbook playbooks/prepare/prepare.yml -i inventories/$CUSTOMER/plugin/$ENVIRONMENT"
+          sh "cd .easy-deploy; ANSIBLE_CONFIG=./config/ansible.cfg ansible-playbook playbooks/prepare/prepare.yml -i inventories/$CUSTOMER/plugin/$ENVIRONMENT"
       }
     }
 
     stage('Deploying') {
       steps {
-          sh "cd .easy-deploy; ANSIBLE_CONFIG=pwd()/config/ansible.cfg ansible-playbook playbooks/$CUSTOMER/wallet.yml -i inventories/$CUSTOMER/plugin/$ENVIRONMENT"
+          sh "cd .easy-deploy; ANSIBLE_CONFIG=./config/ansible.cfg ansible-playbook playbooks/$CUSTOMER/wallet.yml -i inventories/$CUSTOMER/plugin/$ENVIRONMENT"
       }
     }
   }
